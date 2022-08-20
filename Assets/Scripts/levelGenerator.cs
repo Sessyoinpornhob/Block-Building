@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class levelGenerator : MonoBehaviour
 {
+    public static levelGenerator instance;
+    
     public int width = 3;
     public int height = 3;
 
@@ -12,6 +14,8 @@ public class levelGenerator : MonoBehaviour
     
     void Start()
     {
+        instance = this;
+        
         //初始化列表，列表长度为方块的长宽高
         gridElements = new gridElement[width * width * height];
         
@@ -23,7 +27,7 @@ public class levelGenerator : MonoBehaviour
                 {
                     //实例化格子；将格子命名；将格子按顺序放置与列表中
                     gridElement gridElementInstance = Instantiate(gridElement, new Vector3(x,y,z), Quaternion.identity, this.transform);
-                    gridElementInstance.name = "GridElement_" + x + "_" + y + "_" + z;
+                    gridElementInstance.Initialize(x,y,z);
                     gridElements[x + width * (z + width * y)] = gridElementInstance;
                 }
             }
