@@ -568,7 +568,9 @@ MonoBehaviour:
   width: 5
   height: 6
   gridElement: {fileID: -6711555799091616530, guid: 4e6ef8560a59ab74bbbde9718cd81a13, type: 3}
+  cornerElement: {fileID: 5949767027514366770, guid: 0db510b429017e948b7767784a53b630, type: 3}
   gridElements: []
+  cornerElements: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

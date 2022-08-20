@@ -16,6 +16,8 @@ public class gridElement : MonoBehaviour
     private Collider _collider;
     private Renderer _renderer;
 
+    public cornerElement[] corners = new cornerElement[8];
+
     public void Initialize(int setX, int setY, int setZ)
     {
         _coord = new coord(setX, setY, setZ);
