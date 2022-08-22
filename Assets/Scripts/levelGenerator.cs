@@ -28,7 +28,7 @@ public class levelGenerator : MonoBehaviour
             {
                 for (int z = 0; z < width+1; z++)
                 {
-                    //实例化格子；将格子命名；将格子按顺序放置与列表中
+                    //实例化ce 位置的实例化不在此处 在ge.cs
                     cornerElement cornerElementInstance = Instantiate(cornerElement, Vector3.zero, Quaternion.identity, this.transform);
                     cornerElementInstance.Initialize(x,y,z);
                     cornerElements[x + (width+1) * (z + (width+1) * y)] = cornerElementInstance;
@@ -48,6 +48,16 @@ public class levelGenerator : MonoBehaviour
                     gridElements[x + width * (z + width * y)] = gridElementInstance;
                 }
             }
+        }
+
+        foreach (cornerElement corner in cornerElements)
+        {
+            corner.SetNearGridElements();
+        }
+
+        foreach (gridElement gridElement in gridElements)
+        {
+            gridElement.SetEnable();
         }
     }
     
