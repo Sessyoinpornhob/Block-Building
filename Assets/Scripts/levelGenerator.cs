@@ -13,15 +13,10 @@ public class levelGenerator : MonoBehaviour
     public cornerElement cornerElement;
     public gridElement[] gridElements;
     public cornerElement[] cornerElements;
-
-    private float floorHeight = 0.25f, basementHeight;
     
     void Start()
     {
         instance = this;
-
-        basementHeight = 1.5f - floorHeight / 2;
-        float elementHeight = 1f;
         
         //初始化列表，列表长度为方块的长宽高
         gridElements = new gridElement[width * width * height];
@@ -43,28 +38,13 @@ public class levelGenerator : MonoBehaviour
         
         for (int y = 0; y < height; y++)
         {
-            float yPos = y;
-            if (y == 0)
-            {
-                elementHeight = floorHeight;
-            }
-            else if (y == 1)
-            {
-                elementHeight = basementHeight;
-                yPos = floorHeight / 2 + basementHeight / 2;
-            }
-            else
-            {
-                elementHeight = 1;
-            }
-            
             for (int x = 0; x < width; x++)
             {
                 for (int z = 0; z < width; z++)
                 {
                     //实例化gridElement；将gridElement命名；将gridElement按顺序放置于列表中
-                    gridElement gridElementInstance = Instantiate(gridElement, new Vector3(x,yPos,z), Quaternion.identity, this.transform);
-                    gridElementInstance.Initialize(x,y,z, elementHeight);
+                    gridElement gridElementInstance = Instantiate(gridElement, new Vector3(x,y,z), Quaternion.identity, this.transform);
+                    gridElementInstance.Initialize(x,y,z);
                     gridElements[x + width * (z + width * y)] = gridElementInstance;
                 }
             }
