@@ -17,13 +17,15 @@ public class gridElement : MonoBehaviour
     private Renderer _renderer;
 
     private bool isEnabled;
-
+    private float elementHeight;
     public cornerElement[] corners = new cornerElement[8];
 
-    public void Initialize(int setX, int setY, int setZ)
+    public void Initialize(int setX, int setY, int setZ, float setElementHeight)
     {
         int width = levelGenerator.instance.width;
         int height = levelGenerator.instance.height;
+        this.elementHeight = setElementHeight;
+        this.transform.localScale = new Vector3(1.0f, elementHeight, 1.0f);
         
         //设置gridElement
         _coord = new coord(setX, setY, setZ);
