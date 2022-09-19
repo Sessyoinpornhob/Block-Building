@@ -63,7 +63,7 @@ public class gridElement : MonoBehaviour
     {
         this.isEnabled = true;
         this._collider.enabled = true;
-        this._renderer.enabled = true;
+        this._renderer.enabled = false;
         foreach (cornerElement ce in corners)
         {
             ce.SetCornerElement();

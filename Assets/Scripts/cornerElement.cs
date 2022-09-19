@@ -7,11 +7,13 @@ public class cornerElement : MonoBehaviour
     private coord _coord;
     public gridElement[] nearGridElements = new gridElement[8];
     public int bitMaskValue;
+    private MeshFilter _meshFilter;
 
     public void Initialize(int setX, int setY, int setZ)
     {
         _coord = new coord(setX, setY, setZ);
         this.name = "CE_" + _coord.x + "_" + _coord.y + "_" + _coord.z;
+        _meshFilter = this.GetComponent<MeshFilter>();
     }
 
     public void SetPosition(float setX, float setY, float setZ)
@@ -22,6 +24,7 @@ public class cornerElement : MonoBehaviour
     public void SetCornerElement()
     {
         bitMaskValue = bitMask.GetBitMask(nearGridElements);
+        this._meshFilter.mesh = cornerMeshes.instance.GetCornerMesh(bitMaskValue);
     }
 
     public void SetNearGridElements()

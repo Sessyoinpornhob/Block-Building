@@ -21,7 +21,14 @@ public static class bitMask
             if (nearGE[1].GetEnabled())
             {
                 bitMask += 2;
-            }            
+            }
+        }
+        if (nearGE[2] != null)
+        {
+            if (nearGE[2].GetEnabled())
+            {
+                bitMask += 4;
+            }               
         }
         if (nearGE[3] != null)
         {
